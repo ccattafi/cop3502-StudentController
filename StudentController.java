@@ -4,6 +4,7 @@ import game.controllers.DefenderController;
 import game.models.Defender;
 import game.models.Game;
 import game.models.Maze;
+import game.models.Node;
 
 import java.util.List;
 
@@ -56,7 +57,11 @@ public final class StudentController implements DefenderController {
 			}
 
 		}
-
+		else { //No Pills behavior, seeks attacker
+			directionToMove = 0;
+			directionToMove = game.getDefender(defendNum).getNextDir(game.getAttacker().getLocation(), true);
+			return directionToMove;
+		}
 	}
 
 	//protects around forks in maze path if attacker is not closer than one; otherwise, seeks attacker
